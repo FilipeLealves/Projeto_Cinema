@@ -41,4 +41,3 @@ def validar_login(usuario, senha): #Validação de login do funcionário
 def incluir_filmes(n,d,g,s):
     lista = [n,d,g,s]
     filmes_atual.append(lista)
-    

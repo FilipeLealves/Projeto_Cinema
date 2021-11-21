@@ -58,4 +58,4 @@ def incluir_filmes(n,d,g,s):
     x = ';'
     lista = [n,x,d,x,g,x,s,'\n']
     file.writelines(lista)
-    #filmes_atual.append(lista)
+    print('giordano is so much gay')

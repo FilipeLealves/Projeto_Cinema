@@ -49,7 +49,5 @@ def cadastrar_sessao():
 
         if escolha == 1:
             sessao = input("\nDigite o número da sala e o horário da sessão...\n(Exemplo - Sala 1 - 10h30)\n\nDigite >>> ")
-            sessoes.append(sessao[escolha - 1][1])
-        break
 
 main()

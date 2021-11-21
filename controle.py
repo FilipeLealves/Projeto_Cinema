@@ -53,9 +53,7 @@ def validar_login(usuario, senha): #Validação de login do funcionário
                 return validação
 
 def incluir_filmes(n,d,g,s):
-
     file = open('bd_atuais.txt','a')
     x = ';'
     lista = [n,x,d,x,g,x,s,'\n']
     file.writelines(lista)
-    #filmes_atual.append(lista)

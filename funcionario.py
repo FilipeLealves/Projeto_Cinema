@@ -36,16 +36,39 @@ def filmes_listados():
     listar_filmes(1)
 
 def cadastrar_sessao():
-    for i in range(len(filmes_atual)):
-        print(f'Filme {i + 1}: {filmes_atual[i][0]}')
-        sessoes.append([filmes_atual[i][0]])
     
-    while True:
+    var = True
+
+    for i in range(len(filmes_atual)):
+            sessoes.append([filmes_atual[i][0]])
+
+    while var:
+        for i in range(len(filmes_atual)):
+            print(f'Filme {i + 1}: {filmes_atual[i][0]}')
+            
+
         escolha = (int(input("\nDeseja adicionar sessão para qual filme?\n>>> ")))
 
-        if escolha == 1:
-            sessao = input("\nDigite o número da sessão e o horario da sessão...\n(Exemplo - Sessão 1 - 10h30)\n\nDigite >>> ")
-            sessoes.append(sessao[escolha - 1][1])
-        break
+        opcoes = [1, 2, 3, 4, 5, 6]
+
+        for j in opcoes:
+            if escolha == j:
+                i = escolha - 1
+            
+                sessao = input("\nDigite o número da sessão e o horario da sessão...\n(Exemplo - Sessão 1 - 10h30)\n\nDigite >>> ")
+                sessoes[i].append(sessao)
+
+                print(sessoes)
+                
+                """print(f"Filme: {sessoes[i][0]}")
+
+                for c in range(1, (len(sessoes))):
+                    print(c)
+                    print(f"Sessões: {sessoes[i][c]}")"""
+
+                continuar = input("\nDeseja continuar adicionando sessão para algum filme?\nDigite 'Sim' ou 'Não' para continuar\n>>> ")
+
+                if continuar == "Não" or continuar == "não":
+                    var = False
 
 main()

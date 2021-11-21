@@ -36,16 +36,18 @@ def filmes_listados():
     listar_filmes(1)
 
 def cadastrar_sessao():
-    for i in range(len(filmes_atual)):
-        print(f'Filme {i + 1}: {filmes_atual[i][0]}')
-        sessoes.append([filmes_atual[i][0]])
+    file = open('bd_atuais.txt','r')
+    lista = file.readline()
+    lista = lista.split(';')
+
+    for i in range(len(lista)):
+        print(f'Filme nº{i + 1}: {lista[0]}')
+        sessoes.append(lista[0])
     
     while True:
         escolha = (int(input("\nDeseja adicionar sessão para qual filme?\n>>> ")))
 
         if escolha == 1:
-            sessao = input("\nDigite o número da sessão e o horario da sessão...\n(Exemplo - Sessão 1 - 10h30)\n\nDigite >>> ")
-            sessoes.append(sessao[escolha - 1][1])
-        break
+            sessao = input("\nDigite o número da sala e o horário da sessão...\n(Exemplo - Sala 1 - 10h30)\n\nDigite >>> ")
 
 main()

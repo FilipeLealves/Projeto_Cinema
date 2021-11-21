@@ -7,15 +7,29 @@ def limpar():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def listar_filmes(num): #Listar os filmes
-    lista = []
+    lista = ''
+    i = 0
+    valor = pega_valor()
     if num == 1:
-        lista = filmes_atual
+        file = open('bd_atuais.txt','r')
+        while i < valor:
+            lista = file.readline()
+            lista = lista.split(';')
+            print(f'Nome: {lista[0]}\nDuração: {lista[1]}\nGênero: {lista[2]}\nSinopse: {lista[3]}\n')
+            i+=1
     if num == 2:
-        lista = filmes_breve
+        file = open('bd_novos.txt','r')
+        while i < 2:
+            lista = file.readline()
+            lista = lista.split(';')
+            print(f'Nome: {lista[0]}\nDuração: {lista[1]}\nGênero: {lista[2]}\nSinopse: {lista[3]}\n')
+            i+=1
 
-    for i in range(len(lista)):
-        print(f'Nome: {lista[i][0]}\nDuração: {lista[i][1]}\nGênero: {lista[i][2]}\nSinopse: {lista[i][3]}\n')
-
+def pega_valor():
+    file = open('bd_atuais.txt','r')
+    cont = len(file.readlines())
+    return cont
+    close(file)
 
 def validar_login(usuario, senha): #Validação de login do funcionário
     conta = []
@@ -39,5 +53,7 @@ def validar_login(usuario, senha): #Validação de login do funcionário
                 return validação
 
 def incluir_filmes(n,d,g,s):
-    lista = [n,d,g,s]
-    filmes_atual.append(lista)
+    file = open('bd_atuais.txt','a')
+    x = ';'
+    lista = [n,x,d,x,g,x,s,'\n']
+    file.writelines(lista)

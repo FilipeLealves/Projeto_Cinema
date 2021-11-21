@@ -44,7 +44,16 @@ def cadastrar_sessao():
         print(f'Filme nº{i + 1}: {lista[0]}')
         sessoes.append(lista[0])
     
-    while True:
+    var = True
+
+    for i in range(len(filmes_atual)):
+            sessoes.append([filmes_atual[i][0]])
+
+    while var:
+        for i in range(len(filmes_atual)):
+            print(f'Filme {i + 1}: {filmes_atual[i][0]}')
+            
+
         escolha = (int(input("\nDeseja adicionar sessão para qual filme?\n>>> ")))
 
         if escolha == 1:

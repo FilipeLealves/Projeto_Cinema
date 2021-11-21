@@ -1,4 +1,4 @@
-from controle import incluir_filmes, listar_filmes, limpar
+from controle import incluir_filmes, listar_filmes, limpar, pega_valor
 from banco_dados import *
 
 def main():
@@ -36,27 +36,37 @@ def filmes_listados():
     listar_filmes(1)
 
 def cadastrar_sessao():
-    file = open('bd_atuais.txt','r')
-    lista = file.readline()
-    lista = lista.split(';')
-
-    for i in range(len(lista)):
-        print(f'Filme nº{i + 1}: {lista[0]}')
-        sessoes.append(lista[0])
     
-    var = True
+    lista = ''
+    valor = pega_valor()
+    file = open('bd_atuais.txt','r')
+    i = 0
 
-    for i in range(len(filmes_atual)):
-            sessoes.append([filmes_atual[i][0]])
-
-    while var:
-        for i in range(len(filmes_atual)):
-            print(f'Filme {i + 1}: {filmes_atual[i][0]}')
+    while i < valor:
+        lista = file.readline()
+        lista = lista.split(';')
+        print(f'Filme nº{i + 1}: {lista[0]}')
+        i += 1
             
+    escolha = (int(input("\nDeseja adicionar sessão para qual filme?\n>>> ")))
 
-        escolha = (int(input("\nDeseja adicionar sessão para qual filme?\n>>> ")))
+    i = 0
+    
+    lista = ''
+    valor = pega_valor()
+    file = open('bd_atuais.txt','r')
+    
+    while i < escolha:
+        lista = file.readline()
+        lista = lista.split(';')
+        filme = lista[0]
+        i += 1
 
-        if escolha == 1:
-            sessao = input("\nDigite o número da sala e o horário da sessão...\n(Exemplo - Sala 1 - 10h30)\n\nDigite >>> ")
+    file = open('bd_sessoes.txt','a')
 
+    sessao = input("\nDigite o número da sala e o horário da sessão...\n(Exemplo - Sala 1 - 10h30)\n\nDigite >>> ")
+
+    filme = filme + ';' + sessao + '\n' 
+    file.writelines(filme)
+    
 main()

@@ -1,7 +1,8 @@
 from controle import incluir_filmes, listar_filmes, limpar, pega_valor
 from banco_dados import *
+import random
 
-def main():
+def main_func():
     while True:
         print('\n')
         print('\tMenu')
@@ -57,16 +58,17 @@ def cadastrar_sessao():
     file = open('bd_atuais.txt','r')
     
     while i < escolha:
+        num = random.randint(1,20)
+        num_char = random.randint(65,90)
         lista = file.readline()
         lista = lista.split(';')
         filme = lista[0]
         i += 1
 
+    code = chr(num_char) + str(num)
     file = open('bd_sessoes.txt','a')
 
-    sessao = input("\nDigite o número da sala e o horário da sessão...\n(Exemplo - Sala 1 - 10h30)\n\nDigite >>> ")
+    sessao = input("\nDigite o número da sala e o horário da sessão...\n(Exemplo - Sala 1 - 10h30)\n\n>>> ")
 
-    filme = filme + ';' + sessao + '\n' 
+    filme = filme + ';' + sessao + ';' + code +'\n' 
     file.writelines(filme)
-    
-main()

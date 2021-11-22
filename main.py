@@ -1,17 +1,19 @@
-import banco_dados, controle, funcionario, programacao
+import banco_dados, controle, funcionario, programacao, login
 #Módulo principal onde o programa vai rodar
 
 def main():
     while True:
         print('\n')
         print('\tCinema Uniesp')
-        print('Bem-vindo ao Cinema Uniesp!\n\nMenu:\n1 - Programação\n')
+        print('Bem-vindo ao Cinema Uniesp!\n\nMenu:\n\n1 - Programação\n2 - Login \n')
 
-        escolha = (int(input('Digite o número da opção que deseja acessar >>> ')))
+        escolha = (int(input('>>> ')))
 
         if   escolha == 1:
             programacao.programacao()
+        elif escolha == 2:
+            login.acessar()
         elif escolha == 0:
             break
 
-main()
+main() 

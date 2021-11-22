@@ -1,5 +1,5 @@
 from controle import validar_login
-from funcionario import main
+import funcionario
 
 def acessar(): #Realização do login do funcionário
     validação = False
@@ -8,7 +8,6 @@ def acessar(): #Realização do login do funcionário
 
     validação = validar_login(usuario, senha)
     if validação == True:
-        main()
+        funcionario.main_func()
     else:
         return 0
-acessar()

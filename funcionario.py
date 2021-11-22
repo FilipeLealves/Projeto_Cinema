@@ -1,7 +1,8 @@
 from controle import incluir_filmes, listar_filmes, limpar, pega_valor
 from banco_dados import *
+import random
 
-def main():
+def main_func():
     while True:
         print('\n')
         print('\tMenu')
@@ -40,6 +41,7 @@ def cadastrar_sessao():
     lista = ''
     valor = pega_valor()
     file = open('bd_atuais.txt','r')
+<<<<<<< HEAD
     i = 0
 
     while i < valor:
@@ -51,22 +53,33 @@ def cadastrar_sessao():
     escolha = (int(input("\nDeseja adicionar sessão para qual filme?\n>>> ")))
 
     i = 0
+=======
+    count = file.readlines()
+    
+    i = 0
+    while i < count:
+        lista = file.readline()
+        lista = lista.split(';')
+        print(f'Filme nº{i + 1}: {lista[0]}')
+        i+=1
+>>>>>>> 5f29ff72e06301a3072aeb2bac13ddc6b7def5d7
     
     lista = ''
     valor = pega_valor()
     file = open('bd_atuais.txt','r')
     
     while i < escolha:
+        num = random.randint(1,20)
+        num_char = random.randint(65,90)
         lista = file.readline()
         lista = lista.split(';')
         filme = lista[0]
         i += 1
 
+    code = chr(num_char) + str(num)
     file = open('bd_sessoes.txt','a')
 
-    sessao = input("\nDigite o número da sala e o horário da sessão...\n(Exemplo - Sala 1 - 10h30)\n\nDigite >>> ")
+    sessao = input("\nDigite o número da sala e o horário da sessão...\n(Exemplo - Sala 1 - 10h30)\n\n>>> ")
 
-    filme = filme + ';' + sessao + '\n' 
+    filme = filme + ';' + sessao + ';' + code +'\n' 
     file.writelines(filme)
-    
-main()

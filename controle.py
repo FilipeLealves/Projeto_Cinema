@@ -1,6 +1,8 @@
 from banco_dados import *
 import os
 
+from sessao import sessao
+
 #Onde o controle de cálculos serão feitos
 
 def limpar():
@@ -25,11 +27,62 @@ def listar_filmes(num): #Listar os filmes
             print(f'Nome: {lista[0]}\nDuração: {lista[1]}\nGênero: {lista[2]}\nSinopse: {lista[3]}\n')
             i+=1
 
+def comprar_ingresso():
+    x = input('\nDeseja comprar ingresso? ')
+    lista = ['sim','Sim','SIM','s','S','1','sIM']
+    num = [0,1,2,3,4,5,6,7,8,9,10]
+    if x in lista:
+        code = input('Código da sessão: ')
+        right_code = verificar_code(code)
+        if right_code == 9999:
+            print('\nCódigo inválido ou inexistente!')
+        elif right_code in num:
+            sessao(right_code)
+    else:
+        pass
+
+def verificar_code(code):
+    code = code + '\n'
+    file = open('bd_sessoes.txt','r')
+    valor = pega_valor_2()
+    i = 0
+    lista = []
+    while i < valor:
+        this = file.readline()
+        this = this.split(';')
+        lista.append(this[2])
+        i+=1
+    
+    j = 0
+    while j < valor:
+        if lista[j] == code:
+            return j
+        else:
+            pass
+        j+=1
+    return 9999
+
+def listar_sessoes():
+    file = open('bd_sessoes.txt','r')
+    count = pega_valor_2()
+    i = 0
+    lista = ''
+    while i < count:
+        lista = file.readline()
+        lista = lista.split(';')
+        print(f'Filme: {lista[0]}\nSessão: {lista[1]}\nCódigo: {lista[2]}\n')
+        i+=1
+
 def pega_valor():
     file = open('bd_atuais.txt','r')
     cont = len(file.readlines())
     return cont
     close(file)
+
+def pega_valor_2():
+    file = open('bd_sessoes.txt','r')
+    cont = len(file.readlines())
+    return cont
 
 def validar_login(usuario, senha): #Validação de login do funcionário
     conta = []
@@ -56,4 +109,10 @@ def incluir_filmes(n,d,g,s):
     file = open('bd_atuais.txt','a')
     x = ';'
     lista = [n,x,d,x,g,x,s,'\n']
+<<<<<<< HEAD
     file.writelines(lista)
+
+#comprar_ingresso()
+=======
+    file.writelines(lista)
+>>>>>>> 5f29ff72e06301a3072aeb2bac13ddc6b7def5d7

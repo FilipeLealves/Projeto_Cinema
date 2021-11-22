@@ -109,6 +109,10 @@ def incluir_filmes(n,d,g,s):
     file = open('bd_atuais.txt','a')
     x = ';'
     lista = [n,x,d,x,g,x,s,'\n']
+<<<<<<< HEAD
     file.writelines(lista)
 
 #comprar_ingresso()
+=======
+    file.writelines(lista)
+>>>>>>> 5f29ff72e06301a3072aeb2bac13ddc6b7def5d7

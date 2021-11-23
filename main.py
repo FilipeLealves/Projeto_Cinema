@@ -3,9 +3,11 @@ import banco_dados, controle, funcionario, programacao, login
 
 def main():
     while True:
+        controle.limpar()
+
         print('\n')
         print('\tCinema Uniesp')
-        print('Bem-vindo ao Cinema Uniesp!\n\nMenu:\n\n1 - Programação\n2 - Login \n')
+        print('Bem-vindo ao Cinema Uniesp!\n\nMenu:\n\n1 - Programação\n2 - Login\n\n0 - Sair \n')
 
         escolha = (int(input('>>> ')))
 

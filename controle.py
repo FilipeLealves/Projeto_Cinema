@@ -12,24 +12,35 @@ def listar_filmes(num): #Listar os filmes
     lista = ''
     i     = 0
     valor = pega_valor()
+    valor_novos = pega_novos()
     
     if num == 1:
         file = open('bd_atuais.txt','r')
+
+        if valor > 0:
+            while i < valor:
+                lista = file.readline()
+                lista = lista.split(';')
+                print(f'Nome: {lista[0]}\nDuração: {lista[1]}\nGênero: {lista[2]}\nSinopse: {lista[3]}\n')
+                i += 1
+        else:
+            print("\nErro! Nenhum filme foi cadastrado no momento!")
         
-        while i < valor:
-            lista = file.readline()
-            lista = lista.split(';')
-            print(f'Nome: {lista[0]}\nDuração: {lista[1]}\nGênero: {lista[2]}\nSinopse: {lista[3]}\n')
-            i += 1
-    
+        input("\nAperte enter para continuar...")
+
     if num == 2:
         file = open('bd_novos.txt','r')
         
-        while i < 2:
-            lista = file.readline()
-            lista = lista.split(';')
-            print(f'Nome: {lista[0]}\nDuração: {lista[1]}\nGênero: {lista[2]}\nSinopse: {lista[3]}\n')
-            i += 1
+        if valor_novos > 0:
+            while i < valor_novos:
+                lista = file.readline()
+                lista = lista.split(';')
+                print(f'Nome: {lista[0]}\nDuração: {lista[1]}\nGênero: {lista[2]}\nSinopse: {lista[3]}\n')
+                i += 1
+        else:
+            print("\nErro! Nenhum filme foi cadastrado no momento!")
+
+        input("\nAperte enter para continuar...")
 
 def comprar_ingresso():
     x     = input('\nDeseja comprar ingresso?\n>>> ')
@@ -89,6 +100,12 @@ def pega_valor():
     return cont
     close(file)
 
+def pega_novos():
+    file = open('bd_novos.txt','r')
+    cont = len(file.readlines())
+    return cont
+    close(file)
+
 def pega_valor_2():
     file = open('bd_sessoes.txt','r')
     cont = len(file.readlines())
@@ -118,6 +135,12 @@ def validar_login(usuario, senha): #Validação de login do funcionário
 
 def incluir_filmes(n,d,g,s):
     file  = open('bd_atuais.txt','a')
+    x     = ';'
+    lista = [n,x,d,x,g,x,s,'\n']
+    file.writelines(lista)
+
+def incluir_breves(n,d,g,s):
+    file  = open('bd_novos.txt','a')
     x     = ';'
     lista = [n,x,d,x,g,x,s,'\n']
     file.writelines(lista)

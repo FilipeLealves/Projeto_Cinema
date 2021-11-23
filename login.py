@@ -1,9 +1,11 @@
-from controle import validar_login
-import funcionario
+from controle import limpar, validar_login
+import funcionario, controle
 
 def acessar(): #Realização do login do funcionário
+    controle.limpar()
+
     validação = False
-    usuario   = str(input('Usuário: '))
+    usuario   = str(input('\nUsuário: '))
     senha     = str(input('Senha: '))
     validação = validar_login(usuario, senha)
     

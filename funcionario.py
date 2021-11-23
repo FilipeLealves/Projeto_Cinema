@@ -15,7 +15,8 @@ def main_func():
 
 def menu(x):
     limpar()
-    if x == 1:
+    
+    if   x == 1:
         cadastro_filmes()
     elif x == 2:
         filmes_listados()
@@ -26,9 +27,9 @@ def menu(x):
 
 def cadastro_filmes():
     print('Cadastro de filme\n')
-    nome = str(input('Nome: '))
+    nome    = str(input('Nome: '))
     duração = str(input('Duração: '))
-    genero = str(input('Gênero: '))
+    genero  = str(input('Gênero: '))
     sinopse = str(input('Sinopse: '))
 
     incluir_filmes(nome,duração,genero,sinopse)
@@ -37,12 +38,10 @@ def filmes_listados():
     listar_filmes(1)
 
 def cadastrar_sessao():
-    
     lista = ''
     valor = pega_valor()
-    file = open('bd_atuais.txt','r')
-<<<<<<< HEAD
-    i = 0
+    file  = open('bd_atuais.txt','r')
+    i     = 0
 
     while i < valor:
         lista = file.readline()
@@ -53,23 +52,13 @@ def cadastrar_sessao():
     escolha = (int(input("\nDeseja adicionar sessão para qual filme?\n>>> ")))
 
     i = 0
-=======
-    count = file.readlines()
-    
-    i = 0
-    while i < count:
-        lista = file.readline()
-        lista = lista.split(';')
-        print(f'Filme nº{i + 1}: {lista[0]}')
-        i+=1
->>>>>>> 5f29ff72e06301a3072aeb2bac13ddc6b7def5d7
     
     lista = ''
     valor = pega_valor()
-    file = open('bd_atuais.txt','r')
+    file  = open('bd_atuais.txt','r')
     
     while i < escolha:
-        num = random.randint(1,20)
+        num   = random.randint(1,20)
         num_char = random.randint(65,90)
         lista = file.readline()
         lista = lista.split(';')

@@ -27,8 +27,8 @@ sala = [[OO,OO,OO,OO,OO,OO,OO,OO,OO,OO],
         [OO,OO,OO,OO,OO,OO,OO,OO,OO,OO],
         [OO,OO,OO,OO,OO,OO,OO,OO,OO,OO],]
 
-alpha = []
-num = []
+alpha  = []
+num    = []
 result = []
 n1 = 0
 n2 = 0
@@ -42,15 +42,16 @@ def sessao(code):
 
     valor = controle.pega_valor_2()
 
-    file = open('bd_sessoes.txt','r')
-    i = 0
+    file  = open('bd_sessoes.txt','r')
+    i     = 0
     lista = ''
+    
     while i < code + 1:
         lista = file.readline()
         lista = lista.split(';')
         filme = lista[0]
         this_sessao = lista[1]
-        i+=1
+        i += 1
 
     #print(f'Filme: {filme} | Sesssão: {this_sessao} | Code: {code}')
     while True:
@@ -58,18 +59,21 @@ def sessao(code):
         print(RED+'\t       {}'.format(filme))
         print(f'\t       {this_sessao}\n')
         print(CYAN+'\t   1  2  3  4  5  6  7  8  9  10')
+        
         for i in range(len(sala)):
             print(CYAN+f'\t{chr(65+i)}  '+sala[0][i]+sala[1][i]+sala[2][i]+sala[3][i]+sala[4][i]+sala[5][i]+sala[6][i]+sala[7][i]+sala[8][i]+sala[9][i])
+        
         print(WHITE+'\t   _____________________________')
         print('\t   '+FULL_BLOCK*4+' T '+FULL_BLOCK*3+' E '+FULL_BLOCK*3+' L '+FULL_BLOCK*3+' A '+FULL_BLOCK*4)
         print('\t   '+UPLINE*29)
-        if cadeiras == 0:
+        
+        if  cadeiras == 0:
             cadeiras = int(input('\tQuantas cadeiras: '))
         elif cadeiras > 0:
             print(f'\tCadeiras: {cadeiras}')
             print(WHITE+'\n\tQual lugar deseja marcar?\n')
             lugar = str(input('\t>>> ').upper())
-            cadeiras-=1
+            cadeiras -= 1
 
             for item in lugar:
                 if item.isdigit():
@@ -80,11 +84,11 @@ def sessao(code):
             result = [''.join(num)]
             num.clear()
             num = list(map(int,result))
-            n1 = num[0]
+            n1  = num[0]
 
             letra = alpha[0]
 
-            if letra == 'A':
+            if   letra == 'A':
                 n2 = 1
             elif letra == 'B':
                 n2 = 2

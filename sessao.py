@@ -1,4 +1,4 @@
-import os, controle
+import os, controle, programacao
 
 RED   = "\033[1;31m"  
 CYAN  = "\033[1;36m"
@@ -37,7 +37,7 @@ cadeiras = 0
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def sessao(code):
+def sessoes(code):
     global sala, alpha, num, result, n1, n2, cadeiras
 
     valor = controle.pega_valor_2()
@@ -57,10 +57,10 @@ def sessao(code):
 
     ok = True
     cadeiras_escolhidas = 0
-    lugar_lista = ([''])
+    lugar_lista   = ([''])
     valor_inteira = 32
-    valor_meia = 16
-    valor_total = 0
+    valor_meia    = 16
+    valor_total   = 0
     pagar = 0
 
     while True:
@@ -81,57 +81,70 @@ def sessao(code):
 
         if ok == False:
             i = 1
+
             while i <= cadeiras_escolhidas:
                 print(f'\t    Cadeira selecionada: {lugar_lista[i]}')
-                i+=1
-            print('\t    Valor de ingressos:\n\t    Inteiro - R$ 32,00\n\t    Meia-entrada - R$ 16,00\n')
-            escolha = input('\n\t    Deseja comprar ingressos meia-entrada? [sim] / [não]\n\n>>> ')
+                i += 1
+            
+            print('\n\t    Valor de ingressos:\n\n\t    Entrada-Inteira - R$ 32,00\n\t    Meia-entrada - R$ 16,00\n')
+            escolha = input('\n\t    Deseja comprar ingressos meia-entrada? [sim] / [não]\n\n\t    >>> ')
 
             if escolha in escolha_sim:
-                total_meia = int(input('\t    Total de meia-entradas que serão compradas: '))
+                total_meia    = int(input('\n\t    Quantas meia-entradas serão: '))
                 total_inteira = cadeiras_escolhidas - total_meia
-                valor_total = (total_inteira * valor_inteira) + (total_meia * valor_meia)
+                valor_total   = (total_inteira * valor_inteira) + (total_meia * valor_meia)
+            
             if escolha in escolha_nao:
                 valor_total = cadeiras_escolhidas * valor_inteira
 
-            print(f'\t    Valor total a ser pago: R${valor_total},00')
-            forma_pagamento = int(input('\n\t    Qual método de pagamento | 1 - Cartão / 2 - Dinheiro'))
+            print(f'\n\t    Valor total a ser pago: R${valor_total},00')
+            forma_pagamento = int(input('\n\t    Qual será o método de pagamento?\n\n\t    1 - Cartão\n\t    2 - Dinheiro\n\t    >>> '))
 
             if forma_pagamento == 1:
-                final = int(input('\n\t    Finalizar compra? | 1 - Sim / 2 - Não'))
+                final = int(input('\n\t    Finalizar compra?\n\t    1 - Sim\n\t    2 - Não\n\t    >>> '))
+                del lugar_lista[0]
+
                 if final == 1:
                     print('\n\t    Compra finalizada com sucesso!')
-                    print(f'\n\t    Nome do filme: {filme}\nSessão: {this_sessao}\nCadeiras: {lugar_lista}')
+                    print(f'\n\t    Nome do filme: {filme}\n\t    Sessão: {this_sessao}\n\t    Cadeiras: {lugar_lista}\n')
+                    print("\n\t    Bom filme e Volte sempre!")
+                    input("\n\t    Aperte enter para voltar...")
+                    return 0
                 else:
                     return 0
-                input('')
+                
             elif forma_pagamento == 2:
                 pagar = float(input('\n\t    Digite quanto deseja pagar: '))
+                del lugar_lista[0]
 
                 if pagar < valor_total:
                     while pagar < valor_total:
                         valor = valor_total - pagar
-                        print(f'\n\t    Valor insuficiente! Falta R$ {valor},00')
+                        print(f'\n\t    Valor insuficiente! Falta R$ {valor}')
                         pagar = float(input('\n\t    Digite quanto deseja pagar: '))
 
                 elif pagar == valor_total:
                     print('\n\t    Compra finalizada com sucesso!')
-                    print(f'\n\t    Nome do filme: {filme}\nSessão: {this_sessao}\nCadeiras: {lugar_lista}')
+                    print(f'\n\t    Nome do filme: {filme}\n\t    Sessão: {this_sessao}\n\t    Cadeiras: {lugar_lista}\n')
+                    print("\n\t    Bom filme e Volte sempre!")
+                    input("\n\t    Aperte enter para voltar...")
+                    return 0
 
                 elif pagar > valor_total:
                     valor = pagar - valor_total
-                    print(f'\n\t    Compra finalizada com sucesso! | R$ {valor},00 de troco')
-                    print(f'\n\t    Nome do filme: {filme}\nSessão: {this_sessao}\nCadeiras: {lugar_lista}')
-                
-                input('')
+                    print(f'\n\t    Compra finalizada com sucesso!  R$ {valor} de troco')
+                    print(f'\n\t    Nome do filme: {filme}\n\t    Sessão: {this_sessao}\n\t    Cadeiras: {lugar_lista}\n')
+                    print("\n\t    Bom filme e Volte sempre!")
+                    input("\n\t    Aperte enter para voltar...")
+                    return 0
 
         if  cadeiras == 0 and ok:
-            cadeiras = int(input('\tQuantas cadeiras: '))
+            cadeiras = int(input('\t    Quantas cadeiras: '))
             cadeiras_escolhidas = cadeiras
 
         elif cadeiras > 0:
-            print(f'\tCadeiras: {cadeiras}')
-            print(WHITE+'\n\tQual lugar deseja marcar?\n')
+            print(f'\t    Cadeiras: {cadeiras}')
+            print(WHITE+'\n\t    Qual lugar deseja marcar?\n')
             lugar = str(input('\t>>> ').upper())
             lugar_lista.append(lugar)
             cadeiras -= 1

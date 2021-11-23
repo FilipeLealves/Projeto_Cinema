@@ -1,4 +1,4 @@
-from controle import incluir_breves, incluir_filmes, listar_filmes, limpar, pega_valor
+from controle import *
 from banco_dados import *
 import random
 

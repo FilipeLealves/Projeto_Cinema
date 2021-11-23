@@ -1,7 +1,7 @@
 from banco_dados import *
 import os
 
-from sessao import sessao
+from sessao import sessoes
 
 #Onde o controle de cálculos serão feitos
 
@@ -9,6 +9,8 @@ def limpar():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def listar_filmes(num): #Listar os filmes
+    limpar()
+    
     lista = ''
     i     = 0
     valor = pega_valor()
@@ -48,13 +50,13 @@ def comprar_ingresso():
     num   = [0,1,2,3,4,5,6,7,8,9,10]
     
     if x in lista:
-        code = input('Código da sessão: ')
+        code = input('\nCódigo da sessão: ')
         right_code = verificar_code(code)
         
         if  right_code == 9999:
             print('\nCódigo inválido ou inexistente!')
         elif right_code in num:
-            sessao(right_code)
+            sessoes(right_code)
     else:
         pass
 
@@ -83,6 +85,7 @@ def verificar_code(code):
     return 9999
 
 def listar_sessoes():
+    limpar()
     file  = open('bd_sessoes.txt','r')
     count = pega_valor_2()
     i     = 0

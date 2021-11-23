@@ -1,10 +1,10 @@
-from controle import listar_filmes, limpar, listar_sessoes, comprar_ingresso
+import controle
 
 #Todo o gerenciamento do banco de dados será feito aqui
 
 def programacao():
-    while True: 
-        limpar()    
+    while True:
+        controle.limpar() 
         print('\n\tProgramação\n')
         print('Para ver a nossa programação de filmes é só escolher uma das opções abaixo...\n\n1 - Filmes atuais\n2 - Filmes breve\n3 - Ver sessões\n\n0 - Voltar\n')
 
@@ -12,11 +12,11 @@ def programacao():
         print('\n')
 
         if   x == 1:
-            listar_filmes(1) # Nº1 para FILMES ATUAIS | Nº2 para FILMES EM BREVE
+            controle.listar_filmes(1) # Nº1 para FILMES ATUAIS | Nº2 para FILMES EM BREVE
         elif x == 2:
-            listar_filmes(2) # Nº1 para FILMES ATUAIS | Nº2 para FILMES EM BREVE
+            controle.listar_filmes(2) # Nº1 para FILMES ATUAIS | Nº2 para FILMES EM BREVE
         elif x == 3:
-            listar_sessoes()
-            comprar_ingresso()
+            controle.listar_sessoes()
+            controle.comprar_ingresso()
         elif x == 0:
             break

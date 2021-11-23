@@ -1,12 +1,14 @@
-from controle import incluir_filmes, listar_filmes, limpar, pega_valor
+from controle import incluir_breves, incluir_filmes, listar_filmes, limpar, pega_valor
 from banco_dados import *
 import random
 
 def main_func():
     while True:
+        limpar()
+
         print('\n')
         print('\tMenu')
-        print('\n[1] - Cadastro de filme\n[2] - Listar filmes\n[3] - Cadastrar sessões\n[0] - Sair\n')
+        print('\n1 - Cadastro de filme\n2 - Cadastro de filmes em breve\n3 - Listar filmes\n4 - Cadastrar sessões\n\n0 - Sair\n')
 
         x = menu(int(input('>>> ')))
 
@@ -19,13 +21,17 @@ def menu(x):
     if   x == 1:
         cadastro_filmes()
     elif x == 2:
-        filmes_listados()
+        cadastro_breves()
     elif x == 3:
+        filmes_listados()
+    elif x == 4:
         cadastrar_sessao()
     elif x == 0:
         return False
 
 def cadastro_filmes():
+    limpar()
+
     print('Cadastro de filme\n')
     nome    = str(input('Nome: '))
     duração = str(input('Duração: '))
@@ -34,10 +40,26 @@ def cadastro_filmes():
 
     incluir_filmes(nome,duração,genero,sinopse)
 
+def cadastro_breves():
+    limpar()
+
+    print('Cadastro de filme\n')
+    nome    = str(input('Nome: '))
+    duração = str(input('Duração: '))
+    genero  = str(input('Gênero: '))
+    sinopse = str(input('Sinopse: '))
+
+    incluir_breves(nome,duração,genero,sinopse)
+
 def filmes_listados():
-    listar_filmes(1)
+    limpar()
+
+    escolha = int(input("Deseja visualizar quais filmes...\n\n1 - Filmes atuais\n2 - Filmes em breve\n\n>>> "))
+    listar_filmes(escolha)
 
 def cadastrar_sessao():
+    limpar()
+
     lista = ''
     valor = pega_valor()
     file  = open('bd_atuais.txt','r')

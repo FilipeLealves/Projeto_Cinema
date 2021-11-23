@@ -3,8 +3,8 @@ from controle import listar_filmes, limpar, listar_sessoes, comprar_ingresso
 #Todo o gerenciamento do banco de dados será feito aqui
 
 def programacao():
-    limpar()
-    while True:     
+    while True: 
+        limpar()    
         print('\n\tProgramação\n')
         print('Para ver a nossa programação de filmes é só escolher uma das opções abaixo...\n\n1 - Filmes atuais\n2 - Filmes breve\n3 - Ver sessões\n\n0 - Voltar\n')
 

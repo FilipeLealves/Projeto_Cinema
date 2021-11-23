@@ -176,7 +176,7 @@ def sessao(code):
             if sala[int(n1)-1][n2-1] == OO:
                 sala[int(n1)-1][n2-1] = XX
             else:
-                print('Lugar já esta ocupado!')
+                print('Lugar já está ocupado!')
             
             num.clear()
             alpha.clear()

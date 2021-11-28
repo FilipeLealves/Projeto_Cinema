@@ -55,7 +55,7 @@ def sessoes(code):
 
     #print(f'Filme: {filme} | Sesssão: {this_sessao} | Code: {code}')
 
-    ok = True
+    condicao = True
     cadeiras_escolhidas = 0
     lugar_lista   = ([''])
     valor_inteira = 32
@@ -79,7 +79,7 @@ def sessoes(code):
         escolha_sim = ['sim','Sim','SIM','s','S']
         escolha_nao = ['não','Não','NÃO','n','N','nao']
 
-        if ok == False:
+        if condicao == False:
             i = 1
 
             while i <= cadeiras_escolhidas:
@@ -138,7 +138,7 @@ def sessoes(code):
                     input("\n\t    Aperte enter para voltar...")
                     return 0
 
-        if  cadeiras == 0 and ok:
+        if  cadeiras == 0 and condicao:
             cadeiras = int(input('\t    Quantas cadeiras: '))
             cadeiras_escolhidas = cadeiras
 
@@ -150,7 +150,7 @@ def sessoes(code):
             cadeiras -= 1
 
             if cadeiras == 0:
-                ok = False
+                condicao = False
 
             for item in lugar:
                 if item.isdigit():

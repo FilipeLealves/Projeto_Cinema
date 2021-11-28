@@ -10,9 +10,9 @@ def main_func():
         print('\tMenu')
         print('\n1 - Cadastro de filme\n2 - Cadastro de filmes em breve\n3 - Listar filmes\n4 - Cadastrar sessões\n\n0 - Sair\n')
 
-        x = menu(int(input('>>> ')))
+        escolha = menu(int(input('>>> ')))
 
-        if x == False:
+        if escolha == False:
             break
 
 def menu(x):

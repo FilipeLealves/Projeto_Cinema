@@ -2,4 +2,3 @@
 
 #Login do funcionário do cinema
 login = ['admin','admin']
-

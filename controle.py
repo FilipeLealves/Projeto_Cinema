@@ -45,11 +45,11 @@ def listar_filmes(num): #Listar os filmes
         input("\nAperte enter para continuar...")
 
 def comprar_ingresso():
-    x     = input('\nDeseja comprar ingresso?\n>>> ')
+    escolha     = input('\nDeseja comprar ingresso?\n>>> ')
     lista = ['sim','Sim','SIM','s','S','1','sIM']
     num   = [0,1,2,3,4,5,6,7,8,9,10]
     
-    if x in lista:
+    if escolha in lista:
         code = input('\nCódigo da sessão: ')
         right_code = verificar_code(code)
         
@@ -113,28 +113,6 @@ def pega_valor_2():
     file = open('bd_sessoes.txt','r')
     cont = len(file.readlines())
     return cont
-
-def validar_login(usuario, senha): #Validação de login do funcionário
-    conta     = []
-    conta     = login
-    validação = False
-
-    while True:
-        if conta[0] == usuario and conta[1] == senha:
-            print('Login realizado com sucesso!')
-            validação = True
-            limpar()
-            return validação
-        else:
-            limpar()
-            print('\nLogin inválido!')
-            sair = int(input('\n[1] - Tentar novamente\n[2] - Voltar\n\n>>> '))
-            
-            if   sair == 1:
-                usuario = str(input('\nUsuário: '))
-                senha   = str(input('Senha: '))
-            elif sair == 2:
-                return validação
 
 def incluir_filmes(n,d,g,s):
     file  = open('bd_atuais.txt','a')

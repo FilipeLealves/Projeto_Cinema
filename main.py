@@ -1,7 +1,7 @@
 import banco_dados, controle, funcionario, programacao, login
 #Módulo principal onde o programa vai rodar
 
-def main():
+def menu():
     while True:
         controle.limpar()
 
@@ -18,4 +18,4 @@ def main():
         elif escolha == 0:
             break
 
-main() 
+menu() 

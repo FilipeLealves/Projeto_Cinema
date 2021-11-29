@@ -2,6 +2,17 @@ import controle
 
 #Todo o gerenciamento do banco de dados será feito aqui
 
+class Poo():
+
+    def variavel(self):
+        self.x = 3
+        self.y = 7
+
+def printar():
+    p = Poo()
+    p.variavel()
+    print(p.x,p.y)
+
 def programacao():
     while True:
         controle.limpar() 
